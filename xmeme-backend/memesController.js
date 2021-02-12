@@ -1,8 +1,10 @@
 // memeController.js
 // Import meme model
 Memes = require('./memesModel');
+IdArray = require('./arrayModel');
+var Idarr = new IdArray();
+var idArray = []
 // Handle index actions
-id_array= [];
 exports.index = function (req, res) {
     Memes.get(function (err, memes) {
         if (err) {
@@ -11,13 +13,19 @@ exports.index = function (req, res) {
                 message: err,
             });
         }
+        console.log(idArray)
         let arr = memes.sort(function(a,b){
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.
             return new Date(b.date) - new Date(a.date);
           });
         arr.reverse()
-        let memes_array = arr.map((element) => ({id: element._id, name:element.name, url: element.url,caption: element.caption}))
+        let recent_memes = []
+        if(arr.length>100)
+            recent_memes = arr.slice(0,100);
+        else
+            recent_memes = arr.slice(0,arr.length)
+        let memes_array = recent_memes.map((element) => ({id: element._id, name:element.name, url: element.url,caption: element.caption}))
         res.json({
             data:memes_array
         });
@@ -29,22 +37,26 @@ exports.new = function (req, res) {
     memes.name = req.body.name;
     memes.url = req.body.url;
     memes.caption = req.body.caption;
-// save the meme and check for errors
+    Idarr.id = memes._id;
+    Idarr.save(function (err) {
+        if(err)
+            res.json(err);
+    });
+    // save the meme and check for errors
     memes.save(function (err) {
         if (err)
             res.json(err);
         else{
-            id_array.push(memes._id)
-            console.log(id_array);
             res.json({
-                id: id_array.indexOf(memes._id)+1
+                id: memes._id
             });
         }
     });
 };
 // Handle view meme info
 exports.view = function (req, res) {
-    Memes.findById(req.params.meme_id, function (err, meme) {
+    var index = idArray[req.params.meme_id-1]
+    Memes.findById(index, function (err, meme) {
         if (meme == null){
             res.send("404 error - Invalid Id ");}
         else{
