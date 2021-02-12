@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
-
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}
+import MemeForm from './components/memeForm';
+import Routes from './components/Routes'
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
-
     return (
-      <div>
-        welcome
-      </div>
+      <>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </>
     );
 }
 
