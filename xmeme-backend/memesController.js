@@ -14,12 +14,7 @@ exports.index = function (req, res) {
                 message: err,
             });
         }
-        console.log(idArray)
-        let arr = memes.sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
-            return new Date(b.date) - new Date(a.date);
-          });
+        let arr = memes;
         arr.reverse()
         let recent_memes = []
         if(arr.length>100)

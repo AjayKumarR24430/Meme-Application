@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 350,
       marginBottom:60,
-      marginLeft: 25
+    //   marginLeft: 25
     },
     media: {
       height: 330,
@@ -61,8 +61,8 @@ function DisplayMemes() {
       console.log(memeData)
     
     return(
-        <div style={{marginTop: 30, justifyContent: 'center'}}>
-            <div className="row center">
+        <div style={{marginTop: 30, marginLeft: 30}}>
+            <div className="row">
                 {memeData.map((meme)=> {
                     return(
                         <div className="col-12 col-md-4">
