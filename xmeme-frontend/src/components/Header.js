@@ -6,10 +6,10 @@ function Header() {
     return(
         <>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Mememania</Navbar.Brand>
+          <Navbar.Brand href="/Home">Mememania</Navbar.Brand>
           <Nav className="mr-auto">
-            <Link to="/Home">Home</Link>
-            <Link to="/DisplayMemes">View Memes</Link>
+            <Nav.Link style = {{marginLeft: 40, marginRight: 40}} href="/Home">Home</Nav.Link>
+            <Nav.Link href="/DisplayMemes">View Memes</Nav.Link>
           </Nav>
         </Navbar>       
       </>

@@ -2,6 +2,7 @@
 // Import meme model
 Memes = require('./memesModel');
 IdArray = require('./arrayModel');
+
 var Idarr = new IdArray();
 var idArray = []
 // Handle index actions
@@ -25,7 +26,7 @@ exports.index = function (req, res) {
             recent_memes = arr.slice(0,100);
         else
             recent_memes = arr.slice(0,arr.length)
-        let memes_array = recent_memes.map((element) => ({id: element._id, name:element.name, url: element.url,caption: element.caption}))
+        let memes_array = recent_memes.map((element) => ({id: element._id, name:element.name, url: element.url,caption: element.caption, date: element.create_date.toDateString()}))
         res.json({
             data:memes_array
         });
@@ -60,7 +61,7 @@ exports.view = function (req, res) {
         if (meme == null){
             res.send("404 error - Invalid Id ");}
         else{
-            meme_id = {"id": meme._id, "name":meme.name, "url": meme.url, "caption": meme.caption}
+            meme_id = {"id": meme._id, "name":meme.name, "url": meme.url, "caption": meme.caption, "date": meme.create_date}
             res.json({
                 data: meme_id
             });
@@ -79,7 +80,7 @@ Memes.findById(req.params.meme_id, function (err, meme) {
         meme.save(function (err) {
             if (err)
                 res.json(err);
-            meme_id = {"id": meme._id, "name":meme.name, "url": meme.url, "caption": meme.caption}
+            meme_id = {"id": meme._id, "name":meme.name, "url": meme.url, "caption": meme.caption,"date": meme.create_date}
             res.json({
                 message: 'Meme Info updated',
                 data: meme_id
