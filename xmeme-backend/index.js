@@ -26,7 +26,7 @@ else
     console.log("Db connected successfully")
 
 // Setup server port
-var port = process.env.PORT || 8080;
+var port = 8081;
 
 // Use Api routes in the App
 app.use((req, res, next) => {
