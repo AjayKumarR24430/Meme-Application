@@ -25,31 +25,31 @@
 
 4. Endpoint to send a meme to the backend
 
-HTTP Method - POST
+        HTTP Method - POST
 
-Endpoint - /memes
+        Endpoint - /memes
 
-Json Body contains these inputs - name, url, caption
+        Json Body contains these inputs - name, url, caption
 
 The backend should allocate a unique id for the meme and return it as a json response.
 
 5. Endpoint to fetch the latest 100 memes created from the backend
 
-HTTP Method - GET
+        HTTP Method - GET
 
-Endpoint - /memes
+        Endpoint - /memes
 
-Error:
-If there are no memes available, an empty array shall be returned.
+        Error:
+        If there are no memes available, an empty array shall be returned.
 
 6. Endpoint to specify a particular id (identifying the meme) to fetch a single Meme.
 
-HTTP Method - GET
+        HTTP Method - GET
 
-Endpoint - /memes/<id>
+        Endpoint - /memes/<id>
 
-Error:
-If a meme with that Id doesn’t exist, a 404 HTTP response code should be returned.
+        Error:
+        If a meme with that Id doesn’t exist, a 404 HTTP response code should be returned.
 
 7. The database shall be designed to store and retrieve the meme content.
 
@@ -64,6 +64,8 @@ Display memes in the reverse chronological order i.e. last created one first.
 11. Both the Frontend and Backend are deployed publicly.
 
 Publicly deployed Front-end Url: http://13.126.202.52:3000/
+
+Publicly deployed Back-end Url: http://13.126.202.52:8081/memes
 
 
 #### Tech stack used:
