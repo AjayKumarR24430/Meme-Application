@@ -1,10 +1,6 @@
 // memeController.js
 // Import meme model
 Memes = require('./memesModel');
-IdArray = require('./arrayModel');
-
-var Idarr = new IdArray();
-var idArray = []
 // Handle index actions
 exports.index = function (req, res) {
     Memes.get(function (err, memes) {
