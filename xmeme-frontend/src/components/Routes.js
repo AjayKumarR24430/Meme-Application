@@ -9,10 +9,7 @@ function Routes() {
     <div>
       <Header />
       <Switch>
-        <Route exact path="/Home" component={MemeForm} />
-        <Route exact path="/">
-          <Redirect to="/Home" />
-        </Route>
+        <Route exact path="/" component={MemeForm} />
         <Route exact path="/DisplayMemes" component={DisplayMemes} />
       </Switch>
     </div>
