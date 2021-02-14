@@ -15,24 +15,30 @@ class MemeForm extends Component {
       caption: '',
       url: ''
     }
+    //binding each function to this
     this.submitMemeDetails = this.submitMemeDetails.bind(this);
     this.handleCaptionChange = this.handleCaptionChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
   }
 
+  // handle name change
   handleNameChange(e){
     this.setState({name: e.target.value});
   }
 
+  //handle caption change
   handleCaptionChange(e){
     this.setState({caption: e.target.value});
   }
 
+  //handle url change
   handleUrlChange(e){
     this.setState({url: e.target.value});
   }
 
+
+  //function to post data
   async postData(url = '', data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
@@ -55,6 +61,7 @@ class MemeForm extends Component {
     let name =this.state.name;
     let caption = this.state.caption;
     let url = this.state.url;
+    // the url is the backend server running (Ec2 INSTANCE)
     this.postData('http://ec2-13-126-202-52.ap-south-1.compute.amazonaws.com:8081/memes', { name: name,  caption: caption, url: url})
     .then(data => {
       console.log(data); // JSON data parsed by `data.json()` call

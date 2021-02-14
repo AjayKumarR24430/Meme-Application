@@ -2,6 +2,7 @@
 // Import meme model
 Memes = require('./memesModel');
 // Handle index actions
+// get data
 exports.index = function (req, res) {
     Memes.get(function (err, memes) {
         if (err) {
@@ -11,8 +12,10 @@ exports.index = function (req, res) {
             });
         }
         let arr = memes;
+        //reverse the array to get latest memes first
         arr.reverse()
         let recent_memes = []
+        // display only 100 memes if number exceeds 100
         if(arr.length>100)
             recent_memes = arr.slice(0,100);
         else
@@ -24,16 +27,12 @@ exports.index = function (req, res) {
     });
 };
 // Handle create meme actions
+//post data
 exports.new = function (req, res) {
     var memes = new Memes();
     memes.name = req.body.name;
     memes.url = req.body.url;
     memes.caption = req.body.caption;
-    Idarr.id = memes._id;
-    Idarr.save(function (err) {
-        if(err)
-            res.json(err);
-    });
     // save the meme and check for errors
     memes.save(function (err) {
         if (err)
@@ -46,6 +45,7 @@ exports.new = function (req, res) {
     });
 };
 // Handle view meme info
+// get meme data by id
 exports.view = function (req, res) {
     Memes.findById(req.params.meme_id, function (err, meme) {
         if (meme == null){
@@ -59,6 +59,7 @@ exports.view = function (req, res) {
     });
 };
 // Handle update meme info
+// update meme data using id
 exports.update = function (req, res) {
 Memes.findById(req.params.meme_id, function (err, meme) {
         if (meme==null)
@@ -79,6 +80,7 @@ Memes.findById(req.params.meme_id, function (err, meme) {
     });
 };
 // Handle delete meme
+// using id
 exports.delete = function (req, res) {
     Memes.remove({
         _id: req.params.meme_id
