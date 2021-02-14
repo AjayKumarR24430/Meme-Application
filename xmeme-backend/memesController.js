@@ -51,8 +51,7 @@ exports.new = function (req, res) {
 };
 // Handle view meme info
 exports.view = function (req, res) {
-    var index = idArray[req.params.meme_id-1]
-    Memes.findById(index, function (err, meme) {
+    Memes.findById(req.params.meme_id, function (err, meme) {
         if (meme == null){
             res.send("404 error - Invalid Id ");}
         else{
