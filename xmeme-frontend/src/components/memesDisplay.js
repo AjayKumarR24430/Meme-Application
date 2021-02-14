@@ -51,7 +51,7 @@ function DisplayMemes() {
     };
 
     useEffect(async () => {
-        await fetch('http://127.0.0.1:8081/memes')
+        await fetch('http://ec2-13-126-202-52.ap-south-1.compute.amazonaws.com:8081/memes')
           .then(response => response.json())
           .then(result => {
             setData(result.data);

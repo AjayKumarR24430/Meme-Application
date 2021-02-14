@@ -55,7 +55,7 @@ class MemeForm extends Component {
     let name =this.state.name;
     let caption = this.state.caption;
     let url = this.state.url;
-    this.postData('http://localhost:8081/memes', { name: name,  caption: caption, url: url})
+    this.postData('http://ec2-13-126-202-52.ap-south-1.compute.amazonaws.com:8081/memes', { name: name,  caption: caption, url: url})
     .then(data => {
       console.log(data); // JSON data parsed by `data.json()` call
     });
