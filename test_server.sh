@@ -33,26 +33,20 @@ chmod +x sleep.sh
 
 # Should return an empty array.
 
-curl --location --request GET 'http://localhost:8081/memes'
+curl --location --request GET 'http://13.126.202.52:8081/memes'
 
 
 # Execute the POST /memes endpoint using curl
 
-curl --location --request POST 'http://13.126.202.52:8081/memes' \
-
---header 'Content-Type: application/json' \
-
---data-raw '{
-
-"name": "xyz",
-
-"url": "abc.com",
-
-"caption": "This is a meme"
-
-}'
+curl --location --request POST 'http://13.126.202.52:8081/memes/' \
+	-H 'Content-Type: application/json' \
+	-d '{
+   "name": "meme",
+       "url": "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg",
+           "caption": "Sample"
+   }'
 
 
 # Execute the GET /memes endpoint using curl
 
-curl --location --request GET 'http://localhost:8081/memes'
+curl --location --request GET 'http://13.126.202.52:8081/memes'
