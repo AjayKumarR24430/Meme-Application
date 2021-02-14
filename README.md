@@ -86,5 +86,5 @@ Publicly deployed Back-end Url: http://13.126.202.52:8081/memes
 #### Back-End:
 - Back end is created using mongo, node and express.
 - Using node and express, the main four operations can be performed, namely: GET, POST, UPDATE AND DELETE.
-- /memes endpoing allows the users to send in the details (post) and get back/fetch the details back.
+- /memes endpoint allows the users to send in the details (post) and get back/fetch the details back.
 - The users can update the url/caption using the meme id and also can delete a particular meme if you wish to.
