@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/memes', { useNewUrlParser: true});
 var db = mongoose.connection;
@@ -29,18 +33,18 @@ else
 var port = process.env.PORT || 8081;
 
 // Use Api routes in the App
-app.use((req, res, next) => {
-    const allowedOrigins = ['http://13.126.202.52:3000/','http://127.0.0.1:3000', 'http://localhost:3000', 'http://127.0.0.1:4200', 'http://localhost:4200', 'http://127.0.0.1:8020', 'http://localhost:8020', 'http://127.0.0.1:9000', 'http://localhost:9000'];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    return next();
-  });
+// app.use((req, res, next) => {
+//     const allowedOrigins = ['http://13.126.202.52:3000/','http://127.0.0.1:3000', 'http://localhost:3000', 'http://127.0.0.1:4200', 'http://localhost:4200', 'http://127.0.0.1:8020', 'http://localhost:8020', 'http://127.0.0.1:9000', 'http://localhost:9000'];
+//     const origin = req.headers.origin;
+//     if (allowedOrigins.includes(origin)) {
+//          res.setHeader('Access-Control-Allow-Origin', origin);
+//     }
+//     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+//     res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.header('Access-Control-Allow-Credentials', true);
+//     return next();
+//   });
 app.use('/', apiRoutes);
 // Launch app to listen to specified port
 app.listen(port, function () {
