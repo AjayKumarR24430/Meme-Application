@@ -9,4 +9,4 @@ cd ./xmeme-backend
 
 npm install
 
-npm run
+npm start
