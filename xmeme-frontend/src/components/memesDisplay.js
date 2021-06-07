@@ -52,7 +52,7 @@ function DisplayMemes() {
 
     // gets data from the specified server using fetch
     useEffect(async () => {
-        await fetch('http://ec2-13-126-202-52.ap-south-1.compute.amazonaws.com:8081/memes')
+        await fetch('http://localhost:8081/memes')
           .then(response => response.json())
           .then(result => {
             setData(result.data);
