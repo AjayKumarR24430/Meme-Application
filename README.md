@@ -61,12 +61,6 @@ The backend should allocate a unique id for the meme and return it as a json res
 
 Display memes in the reverse chronological order i.e. last created one first.
 
-11. Both the Frontend and Backend are deployed publicly.
-
-Publicly deployed Front-end Url: http://13.126.202.52:3000/
-
-Publicly deployed Back-end Url: http://13.126.202.52:8081/memes
-
 
 #### Tech stack used:
 - Mongo DB
